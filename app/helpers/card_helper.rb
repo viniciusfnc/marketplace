@@ -12,9 +12,8 @@ module CardHelper
           concat link_to "Adquirir", new_user_report_path(id: report.id), class: 'btn btn-primary'
         else
           user_report = UserReport.where(user_id: current_user, report_id: report).first
-          p user_report
           concat link_to "Revogar", user_report_path(user_report), method: :delete, class: 'btn btn-danger',
-                 data: { confirm: "Tem certeza que deseja revogar o acesso ao relatório '#{report.name}'?" }
+                 data: { confirm: "Tem certeza que deseja revogar o acesso ao relatório '#{report.name}'?" } if user_report.exists?
         end
       end
     end
