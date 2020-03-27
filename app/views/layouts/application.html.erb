@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Marketplace</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+
+<!-- Image and text -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">
+    <%= image_tag("logo.svg", class: "d-inline-block align-top", width: "30", height: "30", alt: 'LOGO') %>
+    Marketplace
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <% if user_signed_in? %>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Dashboard <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <%= link_to('Relatórios', reports_path, :class => 'nav-link') %>
+        </li>
+        <li class="nav-item">
+          <%= link_to('KPIS', kpis_path, :class => 'nav-link') %>
+        </li>
+        <li class="nav-item">
+          <%= link_to('Etiquetas', labels_path, :class => 'nav-link') %>
+        </li>
+      </ul>
+      <p class="navbar-text float-right">
+        Logado como: <strong><%= current_user.email %></strong>.
+        <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> |
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+      </p>
+      </div>
+    <% end %>
+
+    </nav>
+
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
+<div class="container-fluid" style="margin-top: 20px;">
+<%= yield %>
+</div>
+</body>
+</html>

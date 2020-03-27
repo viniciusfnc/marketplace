@@ -1,0 +1,21 @@
+<%= link_to("<< Voltar", kpis_path, :class => 'back-link') %>
+
+<div class="kpis show">
+  <h2>Dados Kpi</h2>
+
+  <table summary="Report detail view">
+    <tr>
+      <th>Nome</th>
+      <td><%= @kpi.name %></td>
+    </tr>
+    <tr>
+      <th>Dt. Criação</th>
+      <td><%= @kpi.created_at.to_formatted_s(:long)  %></td>
+    </tr>
+    <tr>
+      <th>Últ. Atualização</th>
+      <td><%= @kpi.updated_at.to_formatted_s(:long) %></td>
+    </tr>
+  </table>
+
+</div>

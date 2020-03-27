@@ -1,0 +1,2 @@
+module KipsHelper
+end

@@ -1,0 +1,21 @@
+<%= link_to("<< Voltar", labels_path, :class => 'back-link') %>
+
+<div class="labels show">
+  <h2>Dados Etiqueta</h2>
+
+  <table summary="Report detail view">
+    <tr>
+      <th>Nome</th>
+      <td><%= @label.name %></td>
+    </tr>
+    <tr>
+      <th>Dt. Criação</th>
+      <td><%= @label.created_at.to_formatted_s(:long)  %></td>
+    </tr>
+    <tr>
+      <th>Últ. Atualização</th>
+      <td><%= @label.updated_at.to_formatted_s(:long) %></td>
+    </tr>
+  </table>
+
+</div>

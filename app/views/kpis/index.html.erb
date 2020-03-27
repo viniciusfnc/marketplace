@@ -1,0 +1,31 @@
+<div class="kpis index">
+  <h2>Kpis</h2>
+
+  <%= link_to("Adicionar novo kpi", new_kpi_path, :class => 'action new') %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th >Nome</th>
+        <th>Dt. Criação</th>
+        <th>Últ. Atualização</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @kpis.each do |kpi| %>
+        <tr>
+          <td><%= kpi.name %></td>
+          <td><%= kpi.created_at.to_formatted_s(:db) %></td>
+          <td><%= kpi.updated_at.to_formatted_s(:db) %></td>
+          <td class="actions">
+            <%= link_to fa_icon("eye"), kpi_path(kpi), title: 'Mostrar' %>
+            <%= link_to fa_icon("edit"), edit_kpi_path(kpi), title: 'Editar' %>
+            <%= link_to fa_icon("trash"), kpi_path(kpi), method: :delete, title: 'Excluir',
+                        data: {confirm: "Tem certeza que deseja excluir o kpi '#{kpi.name}'?"} %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,27 @@
+<div class="labels index">
+  <h2>Etiquetas</h2>
+
+  <%= link_to("Adicionar nova etiqueta", new_label_path, :class => 'action new') %>
+
+  <table class="table">
+    <tr class="header">
+      <th>Nome</th>
+      <th>Dt. Criação</th>
+      <th>Últ. Atualização</th>
+      <th>Ações</th>
+    </tr>
+    <% @labels.each do |label| %>
+      <tr>
+        <td><%= label.name %></td>
+        <td><%= label.created_at.to_formatted_s(:db) %></td>
+        <td><%= label.updated_at.to_formatted_s(:db) %></td>
+        <td class="actions">
+          <%= link_to fa_icon("eye"), label_path(label), title: 'Mostrar' %>
+          <%= link_to fa_icon("edit"), edit_label_path(label), title: 'Editar'  %>
+          <%= link_to fa_icon("trash"), label_path(label), method: :delete, title: 'Excluir',
+                      data: { confirm: "Tem certeza que deseja excluir a etiqueta '#{label.name}'?" }  %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

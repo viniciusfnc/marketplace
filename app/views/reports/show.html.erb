@@ -1,0 +1,37 @@
+<%= link_to("<< Voltar", reports_path, :class => 'back-link') %>
+
+<div class="reports show">
+  <h2>Dados Relatório</h2>
+
+  <table summary="Report detail view">
+    <tr>
+      <th>Nome</th>
+      <td><%= @report.name %></td>
+    </tr>
+    <tr>
+      <th>Resumo</th>
+      <td><%= @report.short_description %></td>
+    </tr>
+    <tr>
+      <th>Temporal</th>
+      <td><%= @report.temporal %></td>
+    </tr>
+    <tr>
+      <th>Geográfico</th>
+      <td><%= @report.temporal %></td>
+    </tr>
+    <tr>
+      <th>Descrição</th>
+      <td><%= @report.description %></td>
+    </tr>
+    <tr>
+      <th>Created</th>
+      <td><%= @report.created_at.to_formatted_s(:long)  %></td>
+    </tr>
+    <tr>
+      <th>Updated</th>
+      <td><%= @report.updated_at.to_formatted_s(:long) %></td>
+    </tr>
+  </table>
+
+</div>

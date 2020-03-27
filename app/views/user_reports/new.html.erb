@@ -1,0 +1,47 @@
+<%= link_to("<< Voltar", root_path, :class => 'back-link') %>
+
+<div>
+  <h3><%= @user_report.report.name %></h3>
+
+  <div class="form-group row">
+    <div class="col-12">
+      <h5><%= @user_report.report.description %></h5>
+    </div>
+  </div>
+
+  <%= form_for(@user_report) do |f| %>
+    <%= f.hidden_field(:report_id, :value => @user_report.report.id) %>
+    <div class="form-group row">
+      <div class="col-2">
+        <label>Data Inicial</label>
+        <%= f.date_field :dt_init %>
+      </div>
+
+      <div class="col-2">
+        <label>Data Final</label>
+        <%= f.date_field :dt_final %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-2">
+        <label>Método de Pagamento</label>
+        <%= f.select(:payment_method, options_for_enum(@user_report, :payment_method)) %>
+      </div>
+
+      <div class="col-1">
+        <label>Notificação</label>
+        <%= f.select(:notification_method, options_for_enum(@user_report, :notification_method)) %>
+      </div>
+
+    </div>
+
+
+    <div class="form-group row">
+      <div class="col-2">
+        <%= f.submit 'Comprar', class: 'btn btn-success' %>
+      </div>
+    </div>
+
+  <% end %>
+</div>

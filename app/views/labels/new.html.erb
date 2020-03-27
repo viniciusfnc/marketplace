@@ -1,0 +1,23 @@
+<%= link_to("<< Voltar", labels_path, :class => 'back-link') %>
+
+<div>
+  <h2>Criar Etiqueta</h2>
+
+  <%= form_for(@label) do |f| %>
+
+    <div class="form-group row">
+      <div class="col-4">
+        <label>Nome</label>
+        <%= f.text_field :name, placeholder: 'Entre com o nome', style: 'width: 100%;' %>
+      </div>
+
+    </div>
+
+    <div class="form-group row">
+      <div class="col-2">
+        <%= f.submit 'Criar Etiqueta', class: 'btn btn-success' %>
+      </div>
+    </div>
+
+  <% end %>
+</div>
