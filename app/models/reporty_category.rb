@@ -1,2 +1,0 @@
-class ReportCategory < ApplicationRecord
-end
