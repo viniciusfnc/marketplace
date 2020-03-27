@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class UserReportsController < ApplicationController
-  def show
-    @report = Report.find(params[:id])
-  end
 
   def new
     @user_report = UserReport.new
