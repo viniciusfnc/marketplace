@@ -13,14 +13,14 @@
 ActiveRecord::Schema.define(version: 2020_03_27_045748) do
 
   create_table "kpis", force: :cascade do |t|
-    t.string "name", limit: 100
+    t.string "name", limit: 100, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "kpis_reports", id: false, force: :cascade do |t|
-    t.integer "kpi_id"
-    t.integer "report_id"
+    t.integer "kpi_id", null: false
+    t.integer "report_id", null: false
     t.index ["kpi_id", "report_id"], name: "index_kpis_reports_on_kpi_id_and_report_id"
   end
 
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 2020_03_27_045748) do
   end
 
   create_table "labels_reports", id: false, force: :cascade do |t|
-    t.integer "label_id"
-    t.integer "report_id"
+    t.integer "label_id", null: false
+    t.integer "report_id", null: false
     t.index ["label_id", "report_id"], name: "index_labels_reports_on_label_id_and_report_id"
   end
 
@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(version: 2020_03_27_045748) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.string "name", limit: 100
-    t.string "short_description", limit: 250
-    t.text "description"
+    t.string "name", limit: 100, null: false
+    t.string "short_description", limit: 250, null: false
+    t.text "description", null: false
     t.string "temporal", limit: 1
     t.string "geographic", limit: 1
-    t.decimal "base_price", precision: 13, scale: 2
+    t.decimal "base_price", precision: 13, scale: 2, null: false
     t.binary "sample_file", limit: 1048576
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
