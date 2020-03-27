@@ -1,11 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Repositório contendo solução do Teste Marketplace.
 
-Things you may want to cover:
 
-* Ruby version
+
+* DEMO
+https://marketplacedataplaxe.herokuapp.com/
 
 * System dependencies
 
