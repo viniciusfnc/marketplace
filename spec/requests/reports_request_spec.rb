@@ -26,6 +26,14 @@ RSpec.describe 'Reports', type: :request do
     expect(response).to_not render_template(:show)
   end
 
-  it '' do
+  it 'does not render a different template' do
+    get '/reports/new'
+    expect(response).to_not render_template(:show)
   end
+
+  it 'does not render a different template' do
+    get '/reports/new'
+    expect(response).to_not render_template(:show)
+  end
+
 end
