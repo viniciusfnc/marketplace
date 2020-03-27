@@ -1,5 +1,6 @@
-class UserReportsController < ApplicationController
+# frozen_string_literal: true
 
+class UserReportsController < ApplicationController
   def show
     @report = Report.find(params[:id])
   end
@@ -23,7 +24,6 @@ class UserReportsController < ApplicationController
       flash[:alert] = e.message
       render('new')
     end
-
   end
 
   def destroy
@@ -40,5 +40,4 @@ class UserReportsController < ApplicationController
     params.require(:user_report).permit(:user_id, :report_id, :dt_init, :dt_final, :payment_method,
                                         :notification_method)
   end
-
 end

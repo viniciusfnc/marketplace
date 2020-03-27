@@ -1,8 +1,20 @@
+# frozen_string_literal: true
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
 
 class ActiveSupport::TestCase
+  include FactoryBot::Syntax::Methods
+
+  require 'simplecov'
+  SimpleCov.start 'rails' do
+    add_filter '/bin/'
+    add_filter '/db/'
+    add_filter '/spec/' # for rspec
+    add_filter '/test/' # for minitest
+  end
+
   # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors, with: :threads)
 

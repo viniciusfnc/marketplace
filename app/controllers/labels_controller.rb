@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LabelsController < ApplicationController
   def index
     @labels = Label.sorted
@@ -47,5 +49,4 @@ class LabelsController < ApplicationController
   def label_params
     params.require(:label).permit(:name)
   end
-
 end

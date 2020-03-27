@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class KpisController < ApplicationController
   def index
     @kpis = Kpi.sorted
@@ -45,5 +47,4 @@ class KpisController < ApplicationController
   def kpi_params
     params.require(:kpi).permit(:name)
   end
-
 end

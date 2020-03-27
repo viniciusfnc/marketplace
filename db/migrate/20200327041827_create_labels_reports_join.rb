@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class CreateLabelsReportsJoin < ActiveRecord::Migration[6.0]
   def up
     create_table :labels_reports, id: false do |t|
       t.integer 'label_id', null: false
       t.integer 'report_id', null: false
     end
-    add_index('labels_reports', ['label_id', 'report_id'])
+    add_index('labels_reports', %w[label_id report_id])
   end
 
   def down

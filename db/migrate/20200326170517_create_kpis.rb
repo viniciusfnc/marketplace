@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateKpis < ActiveRecord::Migration[6.0]
   def up
     create_table :kpis do |t|

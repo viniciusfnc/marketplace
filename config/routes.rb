@@ -1,12 +1,12 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   devise_for :users
 
   resources :reports
   resources :kpis
   resources :labels
   resources :user_reports
-
 
   get 'dashboard/index'
   root 'dashboard#index'
