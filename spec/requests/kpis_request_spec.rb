@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Kpis", type: :request do
+RSpec.describe 'Kpis', type: :request do
   let(:user) { FactoryBot.create(:user) }
   let(:kpi) { FactoryBot.create(:kpi) }
 

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "UserReports", type: :request do
+RSpec.describe 'UserReports', type: :request do
   let(:user) { FactoryBot.create(:user) }
   let(:report) { FactoryBot.create(:report) }
   let(:user_report) { FactoryBot.create(:user_report, user: user, report: report) }
@@ -8,7 +10,7 @@ RSpec.describe "UserReports", type: :request do
   it "creates a UserReport and redirects to the UserReport's page" do
     sign_in user
 
-    get '/user_reports/new', params: { id: report.id}
+    get '/user_reports/new', params: { id: report.id }
     expect(response).to render_template(:new)
 
     user_report.payment_method = 'C'
@@ -22,7 +24,7 @@ RSpec.describe "UserReports", type: :request do
     expect(response.body).to include('Relatório', 'adquirido com sucesso.')
   end
 
-  it "error create invalidar UserReport " do
+  it 'error create invalidar UserReport ' do
     sign_in user
 
     post '/user_reports', params: { user_report: user_report.attributes }

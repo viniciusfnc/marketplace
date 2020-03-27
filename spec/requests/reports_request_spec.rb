@@ -47,5 +47,4 @@ RSpec.describe 'Reports', type: :request do
     expect(response).to render_template(:index)
     expect(response.body).to include('Relatório ', ' deletado com sucesso.')
   end
-
 end
