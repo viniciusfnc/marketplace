@@ -29,7 +29,7 @@ class KpisController < ApplicationController
 
   def update
     @kpi = Kpi.find(params[:id])
-    if @kpi.update_attributes(kpi_params)
+    if @kpi.update(kpi_params)
       flash[:notice] = 'Kpi atualizado com sucesso.'
       redirect_to(kpi_path(@kpi))
     else

@@ -21,19 +21,31 @@ RSpec.describe 'Reports', type: :request do
     expect(response.body).to include('Relatório criado com sucesso.')
   end
 
-  it 'does not render a different template' do
-    get '/reports/new'
-    expect(response).to_not render_template(:show)
+  it 'edit a Report and redirects to the Report page' do
+    sign_in user
+
+    get "/reports/#{report.id}/edit"
+    expect(response).to render_template(:edit)
+
+    put "/reports/#{report.id}", params: { report: report.attributes }
+
+    expect(response).to redirect_to(assigns(:reports))
+    follow_redirect!
+
+    expect(response).to render_template(:show)
+    expect(response.body).to include('Relatório atualizado com sucesso.')
   end
 
-  it 'does not render a different template' do
-    get '/reports/new'
-    expect(response).to_not render_template(:show)
-  end
+  it "delete a Report and redirects to the Report's page" do
+    sign_in user
 
-  it 'does not render a different template' do
-    get '/reports/new'
-    expect(response).to_not render_template(:show)
+    delete "/reports/#{report.id}"
+
+    expect(response).to redirect_to(:reports)
+    follow_redirect!
+
+    expect(response).to render_template(:index)
+    expect(response.body).to include('Relatório ', ' deletado com sucesso.')
   end
 
 end

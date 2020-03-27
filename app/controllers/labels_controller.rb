@@ -29,7 +29,7 @@ class LabelsController < ApplicationController
 
   def update
     @label = Label.find(params[:id])
-    if @label.update_attributes(label_params)
+    if @label.update(label_params)
       flash[:notice] = 'Etiqueta atualizada com sucesso.'
       redirect_to(label_path(@label))
     else

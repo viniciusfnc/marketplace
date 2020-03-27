@@ -29,7 +29,7 @@ class ReportsController < ApplicationController
 
   def update
     @report = Report.find(params[:id])
-    if @report.update_attributes(report_params)
+    if @report.update(report_params)
       flash[:notice] = 'Relatório atualizado com sucesso.'
       redirect_to(report_path(@report))
     else

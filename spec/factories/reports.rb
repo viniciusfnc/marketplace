@@ -4,6 +4,7 @@ require 'faker'
 
 FactoryBot.define do
   factory :report do
+    id { Faker::Number.digit }
     name { Faker::Name.name }
     short_description { Faker::Name.name }
     description { Faker::Name.name }
