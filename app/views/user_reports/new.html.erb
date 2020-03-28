@@ -9,6 +9,9 @@
     </div>
   </div>
 
+  <%= link_to(fa_icon("download"), rails_blob_path(@user_report.report.sample_file, disposition: 'attachment'),
+              title: 'Baixar Arquivo de Exemplo') if @user_report.report.sample_file.attached? %>
+
   <%= form_for(@user_report) do |f| %>
     <%= f.hidden_field(:report_id, :value => @user_report.report.id) %>
     <div class="form-group row">

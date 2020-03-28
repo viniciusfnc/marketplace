@@ -5,33 +5,36 @@
 
   <table class="table">
     <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Resumo</th>
-        <th>Temporal</th>
-        <th>Geográfico</th>
-        <th>Dt. Criação</th>
-        <th>Últ. Atualização</th>
-        <th>Ações</th>
-      </tr>
+    <tr>
+      <th>Nome</th>
+      <th>Resumo</th>
+      <th>Temporal</th>
+      <th>Geográfico</th>
+      <th>Dt. Criação</th>
+      <th>Últ. Atualização</th>
+      <th>Ações</th>
+    </tr>
     </thead>
     <tbody>
-      <% @reports.each do |report| %>
-        <tr>
-          <td><%= report.name %></td>
-          <td><%= report.short_description %></td>
-          <td><%= report.temporal %></td>
-          <td><%= report.geographic %></td>
-          <td><%= report.created_at.to_formatted_s(:db) %></td>
-          <td><%= report.updated_at.to_formatted_s(:db) %></td>
-          <td class="actions">
-            <%= link_to fa_icon("eye"), report_path(report), title: 'Mostrar' %>
-            <%= link_to fa_icon("edit"), edit_report_path(report), title: 'Editar' %>
-            <%= link_to fa_icon("trash"), report_path(report), method: :delete, title: 'Excluir',
-                        data: {confirm: "Tem certeza que deseja excluir o relatório '#{report.name}'?"} %>
-          </td>
-        </tr>
-      <% end %>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.name %></td>
+        <td><%= report.short_description %></td>
+        <td><%= report.temporal %></td>
+        <td><%= report.geographic %></td>
+        <td><%= report.created_at.to_formatted_s(:db) %></td>
+        <td><%= report.updated_at.to_formatted_s(:db) %></td>
+        <td class="actions">
+          <%= link_to fa_icon("eye"), report_path(report), title: 'Mostrar' %>
+          <%= link_to fa_icon("edit"), edit_report_path(report), title: 'Editar' %>
+          <%= link_to fa_icon("trash"), report_path(report), method: :delete, title: 'Excluir',
+                      data: {confirm: "Tem certeza que deseja excluir o relatório '#{report.name}'?"} %>
+          <%= link_to(fa_icon("download"), rails_blob_path(report.sample_file, disposition: 'attachment'),
+                      title: 'Baixar Arquivo de Exemplo') if report.sample_file.attached? %>
+
+        </td>
+      </tr>
+    <% end %>
     </tbody>
   </table>
 </div>

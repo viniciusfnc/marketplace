@@ -33,8 +33,15 @@ ao usuário a aquisição e revogação de um relatório.
 
 ##Dependências utilizadas
 
-#####DEVISE 
-Autenticação do usuário no sistema.
+#####Armazenamento Arquivos
+* Active Record
+
+#####Autenticação 
+Devise
+
+#####FRONT-END
+* bootstrap: estilos
+* font-awesome-rails: ícones e fontes
 
 #####TESTES
 * Rspec: Criação de teste
@@ -46,7 +53,3 @@ Autenticação do usuário no sistema.
 #####SGBD
 * PG (PostgresSQL): versão de produção
 * SQLite: versão desenvolvimento e teste 
-
-#####FRONT ENTD
-* bootstrap: estilos
-* font-awesome-rails: ícones e fontes

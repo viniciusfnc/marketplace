@@ -48,6 +48,6 @@ class ReportsController < ApplicationController
 
   def report_params
     params.require(:report).permit(:name, :short_description, :description, :temporal,
-                                   :kpis, :labels, :geographic, :base_price, :sample_path)
+                                   :kpis, :labels, :geographic, :base_price, :sample_file)
   end
 end

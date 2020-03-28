@@ -9,7 +9,6 @@ class CreateReports < ActiveRecord::Migration[6.0]
       t.string :temporal, limit: 1
       t.string :geographic, limit: 1
       t.decimal :base_price, precision: 13, scale: 2, null: false
-      t.binary :sample_file, limit: 1.megabyte
       t.timestamps
     end
   end

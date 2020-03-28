@@ -24,12 +24,18 @@
       <th>Descrição</th>
       <td><%= @report.description %></td>
     </tr>
+    <% if @report.sample_file.attached? %>
+      <tr>
+        <th>Arquivo de Exemplo</th>
+        <td><%= @report.sample_file.blob.filename %></td>
+      </tr>
+    <% end %>
     <tr>
-      <th>Created</th>
-      <td><%= @report.created_at.to_formatted_s(:long)  %></td>
+      <th>Criação</th>
+      <td><%= @report.created_at.to_formatted_s(:long) %></td>
     </tr>
     <tr>
-      <th>Updated</th>
+      <th>Atualização</th>
       <td><%= @report.updated_at.to_formatted_s(:long) %></td>
     </tr>
   </table>
