@@ -20,8 +20,8 @@
       <tr>
         <td><%= report.name %></td>
         <td><%= report.short_description %></td>
-        <td><%= report.temporal %></td>
-        <td><%= report.geographic %></td>
+        <td><%= translate_enum_value(report, :temporal) %></td>
+        <td><%= translate_enum_value(report, :geographic) %></td>
         <td><%= report.created_at.to_formatted_s(:db) %></td>
         <td><%= report.updated_at.to_formatted_s(:db) %></td>
         <td class="actions">

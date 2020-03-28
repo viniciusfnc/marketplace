@@ -7,8 +7,8 @@ class CreateUserReports < ActiveRecord::Migration[6.0]
       t.integer :report_id, null: false
       t.timestamp :dt_init, null: false
       t.timestamp :dt_final, null: false
-      t.string :payment_method, limit: 100, null: false
-      t.string :notification_method, limit: 100, null: false
+      t.integer :payment_method, null: false
+      t.integer :notification_method, null: false
       t.timestamps
     end
     add_index('user_reports', %w[user_id report_id])

@@ -11,4 +11,10 @@ module EnumHelper
       [I18n.t("activerecord.enums.#{klass.underscore}.#{enum}.#{key}"), key]
     end
   end
+
+  def translate_enum_value(object, enum)
+    klass = object.class.name
+    enum_value = object[enum]
+    I18n.t("activerecord.enums.#{klass.underscore}.#{enum}.#{enum_value}")
+  end
 end
