@@ -1,0 +1,50 @@
+<%= link_to("<< Voltar", root_path, :class => 'back-link') %>
+
+<div>
+  <div class="form-group row">
+    <div class="col-12">
+      <span style="font-size: 30px;"><%= @user_report.report.name %></span>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-12">
+      <h5><%= @user_report.report.description %></h5>
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <div class="col-12">
+      <%= link_to("<i class='fa fa-download'> Baixar arquivo de exemplo</i>".html_safe,
+                  rails_blob_path(@user_report.report.sample_file, disposition: 'attachment'),
+                  title: 'Baixar Arquivo de Exemplo') if @user_report.report.sample_file.attached? %>
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <ul>
+      <li>
+        <strong>Data Inicial:</strong> <%= @user_report.dt_init.to_formatted_s(:db) %>
+      </li>
+      <li>
+        <strong>Data Final:</strong> <%= @user_report.dt_final.to_formatted_s(:db) %>
+      </li>
+      <li>
+        <strong>Forma de Pagamento:</strong> <%= translate_enum_value(@user_report, :payment_method) %>
+      </li>
+      <li>
+        <strong>Notificação:</strong> <%= translate_enum_value(@user_report, :notification_method) %>
+      </li>
+    </ul>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-2" style="margin-top: 25px;">
+      <%= link_to 'Revogar', user_report_path(@user_report), method: :delete, class: 'btn btn-danger',
+         data: { confirm: "Tem certeza que deseja revogar o acesso ao relatório '#{@user_report.report.name}'?" } %>
+    </div>
+  </div>
+
+</div>

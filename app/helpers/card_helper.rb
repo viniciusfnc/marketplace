@@ -10,23 +10,26 @@ module CardHelper
       concat content_tag :p, report[:short_description], class: 'card-text'
 
       if report[:temporal]
-        concat content_tag :p, translate_enum_value(report, :temporal), class: 'card-text'
+        concat content_tag :p,
+                           "<strong>Período:</strong> #{translate_enum_value(report, :temporal)}".html_safe,
+                           class: 'card-text'
       end
       if report[:geographic]
-        concat content_tag :p, translate_enum_value(report, :geographic), class: 'card-text'
+        concat content_tag :p,
+                           "<strong>Região:</strong> #{translate_enum_value(report, :geographic)}".html_safe,
+                           class: 'card-text'
       end
 
-      concat content_tag :p, "Preço: #{number_to_currency(report[:base_price])}",
+      concat content_tag :p, "<strong>Preço:</strong> #{number_to_currency(report[:base_price])}".html_safe,
                          class: 'card-text'
     end
 
     footer_div = tag.div class: 'card-footer' do
       user_report = UserReport.where(user_id: current_user, report_id: report).first
       if user_report.nil?
-        concat link_to 'Adquirir', new_user_report_path(id: report.id), class: 'btn btn-primary'
+        concat link_to 'Adquirir', new_user_report_path(report_id: report.id), class: 'btn btn-warning'
       else
-        concat link_to 'Revogar', user_report_path(user_report), method: :delete, class: 'btn btn-danger',
-          data: { confirm: "Tem certeza que deseja revogar o acesso ao relatório '#{report.name}'?" }
+        concat link_to 'Visualizar', user_report_path(id: report.id), class: 'btn btn-primary'
       end
     end
 

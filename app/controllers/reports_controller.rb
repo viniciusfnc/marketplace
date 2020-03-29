@@ -19,7 +19,8 @@ class ReportsController < ApplicationController
       flash[:notice] = 'Relatório criado com sucesso.'
       redirect_to(reports_path)
     else
-      render('report')
+      flash[:alert] = @report.errors.full_messages
+      render('new')
     end
   end
 
@@ -29,10 +30,15 @@ class ReportsController < ApplicationController
 
   def update
     @report = Report.find(params[:id])
+
+    @report.kpis = Kpi.where(id: params[:report][:kpis])
+    @report.labels = Label.where(id: params[:report][:labels])
+
     if @report.update(report_params)
       flash[:notice] = 'Relatório atualizado com sucesso.'
       redirect_to(report_path(@report))
     else
+      flash[:alert] = @report.errors.full_messages
       render('edit')
     end
   end

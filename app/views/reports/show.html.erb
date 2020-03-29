@@ -1,43 +1,47 @@
 <%= link_to("<< Voltar", reports_path, :class => 'back-link') %>
+<div class="form-group row">
+  <div class="col-4">
+    <h4>Dados do Relatório</h4>
+    <table class="table_report">
+      <p><strong>Nome:</strong> <%= @report.name %><br>
+        <strong>Período:</strong> <%= translate_enum_value(@report, :temporal) %><br>
+        <strong>Região:</strong> <%= translate_enum_value(@report, :geographic) %><br>
+        <strong>Preço Base:</strong> <%= number_to_currency(@report.base_price, precision: 2) %><br>
+        <% if @report.sample_file.attached? %>
+          <strong>Arquivo de Exemplo:</strong> <%= @report.sample_file.blob.filename %><br>
+        <% end %>
+        <strong>Data de Criação:</strong> <%= @report.created_at.to_formatted_s(:long) %><br>
+        <strong>Última Atualização:</strong> <%= @report.updated_at.to_formatted_s(:long) %></p>
+    </table>
 
-<div class="reports show">
-  <h2>Dados Relatório</h2>
+  </div>
 
-  <table summary="Report detail view">
-    <tr>
-      <th>Nome</th>
-      <td><%= @report.name %></td>
-    </tr>
-    <tr>
-      <th>Resumo</th>
-      <td><%= @report.short_description %></td>
-    </tr>
-    <tr>
-      <th>Temporal</th>
-      <td><%= translate_enum_value(@report, :temporal) %></td>
-    </tr>
-    <tr>
-      <th>Geográfico</th>
-      <td><%= translate_enum_value(@report, :geographic) %></td>
-    </tr>
-    <tr>
-      <th>Descrição</th>
-      <td><%= @report.description %></td>
-    </tr>
-    <% if @report.sample_file.attached? %>
-      <tr>
-        <th>Arquivo de Exemplo</th>
-        <td><%= @report.sample_file.blob.filename %></td>
-      </tr>
-    <% end %>
-    <tr>
-      <th>Criação</th>
-      <td><%= @report.created_at.to_formatted_s(:long) %></td>
-    </tr>
-    <tr>
-      <th>Atualização</th>
-      <td><%= @report.updated_at.to_formatted_s(:long) %></td>
-    </tr>
-  </table>
+  <div class="col-4">
+    <h4 style="margin-left: 20px;">KPI's</h4>
+    <ul>
+      <% @report.kpis.each do |kpi| %>
+        <li><%= kpi.name %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-4">
+    <h4 style="margin-left: 20px;">Etiquetas</h4>
+    <ul>
+      <% @report.labels.each do |label| %>
+        <li><%= label.name %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-12">
+    <h4>Resumo</h4>
+    <%= @report.short_description %>
+  </div>
+
+  <div class="col-12" style="margin-top: 20px;">
+    <h4>Descrição</h4>
+    <%= @report.description %>
+  </div>
 
 </div>

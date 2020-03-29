@@ -1,9 +1,12 @@
 <div class="form-group row">
-<% @reports.each do |report| %>
 
+  <% if @reports.empty? %>
+    <h1>Não há relatórios cadastrados!</h1>
+  <% end %>
+
+  <% @reports.each do |report| %>
     <div class="col-3">
-  <%= card_report report %>
+      <%= card_report report %>
     </div>
-
-<% end %>
+  <% end %>
 </div>

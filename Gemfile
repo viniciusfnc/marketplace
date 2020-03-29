@@ -35,8 +35,8 @@ gem 'devise'
 gem 'devise-i18n'
 
 # Reduces boot times through caching; required in config/boot.rb
+gem 'activestorage-validator'
 gem 'bootsnap', '>= 1.4.2', require: false
-
 gem 'rubocop'
 
 group :development, :test do

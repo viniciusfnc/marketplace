@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 class UserReportsController < ApplicationController
+  def show
+    @user_report = UserReport.where(user_id: current_user.id, report_id: params[:id]).first
+  end
+
   def new
     @user_report = UserReport.new
-    @user_report.report = Report.find(params[:id])
+    @user_report.report = Report.find(params[:report_id])
   end
 
   def create
@@ -11,13 +15,11 @@ class UserReportsController < ApplicationController
     @user_report.user = current_user
     @user_report.report = Report.find(params[:user_report][:report_id])
 
-    begin
-      raise @user_report.errors.full_messages unless @user_report.save
-
+    if @user_report.save
       flash[:notice] = "Relatório '#{@user_report.report.name}' adquirido com sucesso."
       redirect_to(root_path)
-    rescue StandardError => e
-      flash[:alert] = e.message
+    else
+      flash[:alert] = @user_report.errors.full_messages
       render('new')
     end
   end

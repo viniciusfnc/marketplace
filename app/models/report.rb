@@ -3,6 +3,8 @@
 class Report < ApplicationRecord
   has_one_attached :sample_file
 
+  validates :sample_file, blob: { content_type: 'text/csv', size_range: 1..5.megabytes }
+
   has_and_belongs_to_many :kpis
   has_and_belongs_to_many :labels
 

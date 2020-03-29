@@ -8,8 +8,8 @@
     <tr>
       <th>Nome</th>
       <th>Resumo</th>
-      <th>Temporal</th>
-      <th>Geográfico</th>
+      <th>Período</th>
+      <th>Região</th>
       <th>Dt. Criação</th>
       <th>Últ. Atualização</th>
       <th>Ações</th>
@@ -19,7 +19,7 @@
     <% @reports.each do |report| %>
       <tr>
         <td><%= report.name %></td>
-        <td><%= report.short_description %></td>
+        <td style="max-width: 400px;"><%= report.short_description %></td>
         <td><%= translate_enum_value(report, :temporal) %></td>
         <td><%= translate_enum_value(report, :geographic) %></td>
         <td><%= report.created_at.to_formatted_s(:db) %></td>

@@ -50,3 +50,8 @@ pt:
         notification_method:
           E: 'E-mail'
           T: 'Telefone'
+    errors:
+      messages:
+        content_type: "não é um formato de arquivo válido"
+        min_size_error: "O tamanho do arquivo deve ser maior que %{min_size}"
+        max_size_error: "O tamanho do arquivo deve ser menor que %{max_size}"
