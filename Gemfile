@@ -46,7 +46,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rails-controller-testing'
-  gem 'rspec-rails', '~> 4.0.0'
   gem 'sqlite3', '~> 1.4'
 end
 
@@ -58,8 +57,13 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
+  # gem 'capybara-webkit'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
+  gem 'cucumber'
+  gem 'database_cleaner'
+  gem 'report_builder'
+  gem 'rspec-rails', '~> 4.0.0'
   gem 'simplecov', require: false
   gem 'webdrivers'
 end

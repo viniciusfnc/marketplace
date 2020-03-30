@@ -69,9 +69,31 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::IntegrationHelpers, type: :request
 
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+
   SimpleCov.start 'rails' do
     add_filter '/bin/'
     add_filter '/db/'
     add_filter '/spec/' # for rspec
+    add_filter '/app/jobs/'
+    add_filter '/app/channels/'
+    add_filter '/app/mailers/'
+    add_filter 'app/models/user.rb'
+    add_filter 'app/models/application_record.rb'
+    add_filter 'app/helpers/dashboard_helper.rb'
+    add_filter 'app/helpers/application_helper.rb'
+    add_filter 'app/helpers/kpis_helper.rb'
+    add_filter 'app/helpers/labels_helper.rb'
+    add_filter 'app/helpers/reports_helper.rb'
+    add_filter 'app/helpers/user_reports_helper.rb'
   end
 end

@@ -10,12 +10,12 @@ RSpec.describe 'UserReports', type: :request do
   it "creates a UserReport and redirects to the UserReport's page" do
     sign_in user
 
-    get '/user_reports/new', params: {report_id: report.id}
+    get '/user_reports/new', params: { report_id: report.id }
     expect(response).to render_template(:new)
 
     user_report.payment_method = 'C'
     user_report.notification_method = 'E'
-    post '/user_reports', params: {user_report: user_report.attributes}
+    post '/user_reports', params: { user_report: user_report.attributes }
 
     expect(response).to redirect_to('/')
     follow_redirect!
@@ -27,9 +27,9 @@ RSpec.describe 'UserReports', type: :request do
   it 'error create invalidar UserReport ' do
     sign_in user
 
-    expect{
-      post '/user_reports', params: {user_report: user_report.attributes}
-    }.to raise_error(ActiveRecord::NotNullViolation)
+    expect  do
+      post '/user_reports', params: { user_report: user_report.attributes }
+    end.to raise_error(ActiveRecord::NotNullViolation)
   end
 
   it "delete a UserReport and redirects to the UserReport's page" do

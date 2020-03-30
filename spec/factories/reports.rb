@@ -6,12 +6,12 @@ FactoryBot.define do
   factory :report do
     id { Faker::Number.digit }
     name { Faker::Name.name }
-    short_description { Faker::Name.name }
-    description { Faker::Name.name }
-    temporal { 'D' }
+    short_description { Faker::TvShows::GameOfThrones.quote }
+    description { Faker::TvShows::Simpsons.quote }
+    temporal { 0 }
     kpis { [] }
     labels { [] }
-    geographic { 'CO' }
+    geographic { 0 }
     base_price { Faker::Number.number(digits: 2) }
   end
 end

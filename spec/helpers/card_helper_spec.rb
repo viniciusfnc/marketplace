@@ -16,9 +16,12 @@ RSpec.describe CardHelper, type: :helper do
   let(:user) { FactoryBot.create(:user) }
   let(:report) { FactoryBot.create(:report) }
 
+  before { allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user) }
+
   describe '#card' do
     xit 'create a correctly card' do
-      allow(helper).to receive(:current_user).and_return(user)
+      #allow(helper).to receive(:current_user).and_return(user)
+      #allow(card_report).to receive(:current_user).and_return(user)
 
       card = card_report report
       expect(card).to exist
